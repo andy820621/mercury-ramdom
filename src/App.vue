@@ -16,7 +16,7 @@
 					</li>
 				</ul>
 			</div>
-			<img class="main-img" src="./assets/0929中秋節 賓果抽獎.png" alt="" />
+			<img class="main-img" src="./assets/background.png" alt="" />
 			<div class="current-number">
 				<p v-if="alertMessage">{{ alertMessage }}</p>
 				<ul v-else class="numberArray">
@@ -26,7 +26,7 @@
 				</ul>
 			</div>
 			<div class="btn" @click.prevent="generateRandomNumbers">
-				<img src="./assets/logo.png" alt="" />
+				<img src="./assets/logoButton.png" alt="" />
 			</div>
 			<div class="inputBox">
 				<label for="count">需要產出的數字個數: </label>
