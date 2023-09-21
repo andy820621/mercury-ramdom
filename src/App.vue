@@ -54,7 +54,7 @@ const count = ref(1);
 const randomNumbers = ref<number[]>([]);
 const selectedNumbersArray = ref<number[][]>([]);
 const alertMessage = computed(() =>
-	numberArray.value.length ? "" : "已經沒有數字可以產生了!!!"
+	numberArray.value.length ? "" : "結束!!!"
 );
 const liFontSize = computed(() => {
 	if (randomNumbers.value.length) {
