@@ -255,6 +255,10 @@ function confirmRestart() {
 					display: flex;
 					align-items: center;
 					gap: 1rem;
+					margin-bottom: 0.24rem;
+					ul {
+						margin: 0;
+					}
 				}
 			}
 		}
