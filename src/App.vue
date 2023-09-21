@@ -19,8 +19,12 @@
 			<img class="main-img" src="./assets/background.png" alt="" />
 			<div class="current-number">
 				<p v-if="alertMessage">{{ alertMessage }}</p>
-				<ul v-else class="numberArray">
-					<li v-for="(number, index) in randomNumbers" :key="index">
+				<ul v-else class="numberArray bigText">
+					<li
+						v-for="(number, index) in randomNumbers"
+						:key="index"
+						:style="{ '--num': liFontSize }"
+					>
 						{{ number }}
 					</li>
 				</ul>
@@ -46,12 +50,29 @@ const numberArray = ref<number[]>([]);
 for (let i = startNumber.value; i <= endNumber.value; i++) {
 	numberArray.value.push(i);
 }
-const count = ref(3);
+const count = ref(1);
 const randomNumbers = ref<number[]>([]);
 const selectedNumbersArray = ref<number[][]>([]);
 const alertMessage = computed(() =>
 	numberArray.value.length ? "" : "已經沒有數字可以產生了!!!"
 );
+const liFontSize = computed(() => {
+	if (randomNumbers.value.length) {
+		switch (randomNumbers.value.length) {
+			case 1:
+				return "6vw";
+			case 2:
+				return "5.3vw";
+			case 3:
+				return "4vw";
+			case 4:
+				return "4vw";
+			case 5:
+				return "3.4vw";
+		}
+	}
+	return "4vw";
+});
 
 watch(count, (val) => {
 	if (val) {
@@ -154,8 +175,8 @@ function confirmRestart() {
 		.inputBox {
 			width: 10%;
 			height: 100px;
-			left: 5%;
-			bottom: 8%;
+			left: 0.5%;
+			bottom: 2.8%;
 			z-index: 3;
 			display: grid;
 			label {
@@ -169,7 +190,7 @@ function confirmRestart() {
 				padding: 0;
 				margin: 0;
 				background: transparent;
-				font-size: 2.8rem;
+				font-size: 1.5rem;
 				color: #000;
 			}
 			input[type="number"]::-webkit-inner-spin-button,
@@ -260,7 +281,8 @@ li {
 
 .numberArray {
 	display: flex;
-	gap: 0.8rem;
+	gap: 0.24rem;
+	margin-bottom: 1rem;
 	li {
 		width: 50px;
 		height: 50px;
@@ -271,5 +293,26 @@ li {
 		display: grid;
 		place-items: center;
 	}
+	&.bigText {
+		margin-bottom: 0;
+		flex-wrap: wrap;
+		width: 100%;
+		height: 100%;
+		justify-content: center;
+		align-items: center;
+		column-gap: 0.8vw;
+		row-gap: 0.01vw;
+		li {
+			--num: 5vw;
+			width: calc(var(--num) * 3 / 2);
+			height: calc(var(--num) * 3 / 2);
+			font-size: var(--num);
+		}
+	}
+}
+ul,
+li {
+	padding: 0;
+	margin: 0;
 }
 </style>
